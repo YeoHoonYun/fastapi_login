@@ -45,6 +45,7 @@ def index():
 
 @app.post("/auth/register")
 def register(user: UserCreate):
+    print(user)
     if user.email in DB["users"]:
         raise HTTPException(status_code=400, detail="A user with this email already exists")
     else:

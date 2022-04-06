@@ -50,11 +50,15 @@
     const data = new FormData(registerForm);
     // convert formdata to json
     let object = {}
-    data.forEach((value, key) => object[key] = value)
+    data.forEach((value, key) => object[key] = value);
+    console.log(object);
 
     // send data to the backend route
     fetch("/auth/register", {
       method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
       body: JSON.stringify(object)
     }).then((response) => response.json())
       .then((data) => {
